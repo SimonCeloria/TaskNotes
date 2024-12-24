@@ -1,0 +1,53 @@
+# Byte-compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+
+# Django stuff:
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+*.pkl
+*.pid
+
+# If you're using environments like venv or pipenv
+env/
+venv/
+.Python
+env.bak/
+env.bak/
+
+# Local settings
+settings_local.py
+
+# Django migrations
+**/migrations/
+
+# Static files and uploads
+static/
+media/
+
+# React and Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+build/
+dist/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.swd
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.~lock.*
