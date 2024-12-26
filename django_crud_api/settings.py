@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     'corsheaders',
     'rest_framework',
     'drf_spectacular',
-    'tasks'
+    'tasks',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -141,4 +143,3 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'API for notes app',
     'VERSION': '1.0.0',
 }
-
