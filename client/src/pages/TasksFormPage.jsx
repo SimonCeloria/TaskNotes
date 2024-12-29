@@ -3,6 +3,7 @@ import { set, useForm } from "react-hook-form";
 import { createTask, deleteTask, getTask, toggleTaskDone, updateTask } from "../api/tasks.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import Navigation from "../components/Navigation";
 
 const TasksFromPage = () => {
     const {
@@ -50,6 +51,7 @@ const TasksFromPage = () => {
 
     return (
         <div className="max-w-xl mx-auto">
+            <Navigation />
             <form onSubmit={onSubmit}>
                 <input
                     type="text"
