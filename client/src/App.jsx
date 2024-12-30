@@ -9,22 +9,23 @@ import Auth from "./pages/Auth";
 function App() {
     return (
         <TaskContextProvider>
-            <BrowserRouter>
-                    <Routes>
-                        <Route path="/auth" element={<Auth />} />
-                        <Route element={<ProtectedRoutes />}>
-                            <Route path="/" element={<TasksPage />} />
-                            <Route
-                                path="/tasks-create"
-                                element={<TasksFormPage />}
-                            />
-                            <Route
-                                path="/:id"
-                                element={<TasksFormPage />}
-                            />
-                        </Route>
-                    </Routes>
-                    <Toaster />
+            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                <Routes>
+                    <Route path="/auth" element={<Auth />} />
+                    <Route element={<ProtectedRoutes />}>
+                        <Route path="/" element={<TasksPage />} />
+                        <Route
+                            path="/tasks-create"
+                            element={<TasksFormPage />}
+                        />
+                        <Route
+                            path="/:id"
+                            element={<TasksFormPage />}
+                        />
+                    </Route>
+                    <Route path="*" element={<div>404 Not Found</div>} />
+                </Routes>
+                <Toaster />
             </BrowserRouter>
         </TaskContextProvider>
     );

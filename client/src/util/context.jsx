@@ -9,8 +9,20 @@ export function TaskContextProvider(props) {
     const [username, setUsername] = useState(null);
 
     useEffect(() => {
-      console.log("Id cambiado a ", id);
-    }, [id])
+        console.log("Id cambiado a ", id);
+    }, [id]);
+
+    useEffect(() => {
+        const savedAuth = localStorage.getItem("isAuth");
+        if (savedAuth) {
+            setIsAuth(JSON.parse(savedAuth));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("isAuth", JSON.stringify(isAuth));
+    }),
+        [isAuth];
 
     return (
         <TaskContext.Provider

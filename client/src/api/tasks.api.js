@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const token = localStorage.getItem("token");
+
+axios.defaults.headers.common["Authorization"] = `Token ${token}`;
+
 const baseURLTasks = axios.create({
     baseURL: "http://localhost:8000/tasks/",
 });
@@ -25,7 +29,7 @@ export const updateTask = (task, id) => {
 };
 
 export const getTask = (id) => {
-    return baseURLTasks.get(`/${id}/`);
+    return baseURLTasks.get(`/${id}/user_tasks/`);
 };
 
 export const toggleTaskDone = (id) => {

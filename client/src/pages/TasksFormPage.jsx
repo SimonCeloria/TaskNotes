@@ -25,7 +25,7 @@ const TasksFromPage = () => {
             await createTask(data);
             toast.success("Task created successfully");
         }
-        navigate("/tasks");
+        navigate("/");
     });
 
     const onDelete = async (id) => {

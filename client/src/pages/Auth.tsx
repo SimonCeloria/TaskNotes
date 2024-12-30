@@ -58,6 +58,10 @@ export default function Auth() {
             setToken(data.token);
             setUsername(data.user.username);
             setIsAuth(true);
+            sessionStorage.setItem("token", data.token);
+            sessionStorage.setItem("id", data.user.id);
+            sessionStorage.setItem("username", data.user.username);
+            sessionStorage.setItem("isAuth", "true");
             navigate("/");
         } else {
             toast.error("Invalid account", {
