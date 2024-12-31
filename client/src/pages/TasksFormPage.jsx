@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { set, useForm } from "react-hook-form";
 import { createTask, deleteTask, getTask, toggleTaskDone, updateTask } from "../api/tasks.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Navigation from "../components/Navigation";
+import { TaskContext } from "../util/context";
 
 const TasksFromPage = () => {
+    const { id } = useContext(TaskContext);
     const {
         register,
         handleSubmit,
@@ -17,6 +19,7 @@ const TasksFromPage = () => {
     const params = useParams();
 
     const onSubmit = handleSubmit(async (data) => {
+        data.user = id;
         if (params.id) {
             console.log("Editing task with id:", params.id);
             await updateTask(data, params.id);

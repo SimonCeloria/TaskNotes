@@ -15,9 +15,11 @@ const TaskList = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-5 sm:grid-cols-3 md:grid-cols-4 bg-white gap-3 mt-0 lg:ml-2 md:ml-2 p-0 w-full">
+        <div className="grid lg:grid-cols-5 sm:grid-cols-3 md:grid-cols-4 bg-transparent gap-3 mt-0 lg:ml-2 md:ml-2 pl-3 w-full">
             {tasks.map((task) => (
-                <TaskCard key={task.id} task={task} />
+                <div className="flex justify-center" key={task.id}>
+                    <TaskCard key={task.id} task={task} />
+                </div>
             ))}
         </div>
     );

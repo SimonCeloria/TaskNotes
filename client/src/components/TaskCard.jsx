@@ -20,8 +20,11 @@ const TaskCard = ({ task }) => {
     return (
         <Card
             sx={{
+                "@media (max-width: 600px)": {
+                    minWidth: "95vw",
+                },
                 width: "100%",
-                backgroundColor: "rgba(150 0 150 / 0.2)",
+                backgroundColor: "#ffc8dd",
             }}
         >
             <CardContent>
@@ -43,7 +46,7 @@ const TaskCard = ({ task }) => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => navigate(`/tasks-create`)}
+                    onClick={() => navigate(`/edit/${task.id}`)}
                     sx={{ mt: 2 }}
                 >
                     Edit

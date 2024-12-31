@@ -11,6 +11,8 @@ from rest_framework.decorators import permission_classes, authentication_classes
 # Create your views here.
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         print("Encabezados recibidos:", self.request.headers)
@@ -26,6 +28,8 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def user_tasks(self, request, pk=None):
+        print("Usuario autenticado:", request.user)
+        print("Encabezados recibidos:", request.headers)
         if not request.user.is_authenticated:
             return HttpResponseForbidden("Debes estar autenticado para ver tus tareas.")
         user = request.user

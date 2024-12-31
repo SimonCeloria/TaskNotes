@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import ProtectedRoutes from "./util/ProtectedRoutes";
 import { TaskContextProvider } from "./util/context";
 import Auth from "./pages/Auth";
+import Editor from "./pages/MDTest";
 
 function App() {
     return (
@@ -15,12 +16,12 @@ function App() {
                     <Route element={<ProtectedRoutes />}>
                         <Route path="/" element={<TasksPage />} />
                         <Route
-                            path="/tasks-create"
+                            path="/edit/:id"
                             element={<TasksFormPage />}
                         />
                         <Route
-                            path="/:id"
-                            element={<TasksFormPage />}
+                            path="/testmd"
+                            element={<Editor />}
                         />
                     </Route>
                     <Route path="*" element={<div>404 Not Found</div>} />

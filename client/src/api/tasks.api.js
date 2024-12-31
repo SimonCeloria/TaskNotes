@@ -24,8 +24,8 @@ export const deleteTask = (id) => {
     return baseURLTasks.delete(`/${id}/`);
 };
 
-export const updateTask = (task, id) => {
-    return baseURLTasks.put(`/${id}/`, task);
+export const updateTask = (task, idTask) => {
+    return baseURLTasks.put(`/${idTask}/`, task);
 };
 
 export const getTask = (id) => {

@@ -18,6 +18,7 @@ import { TaskContext } from "../util/context";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+
 const customTheme = extendTheme({ colorSchemes: { light: {} } });
 
 export default function Auth() {
@@ -58,10 +59,14 @@ export default function Auth() {
             setToken(data.token);
             setUsername(data.user.username);
             setIsAuth(true);
-            sessionStorage.setItem("token", data.token);
-            sessionStorage.setItem("id", data.user.id);
-            sessionStorage.setItem("username", data.user.username);
-            sessionStorage.setItem("isAuth", "true");
+            try {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("id", data.user.id);
+                localStorage.setItem("username", data.user.username);
+                localStorage.setItem("isAuth", "true");
+            } catch (e) {
+                console.error("Error saving to localStorage", e);
+            }
             navigate("/");
         } else {
             toast.error("Invalid account", {
