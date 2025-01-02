@@ -27,6 +27,7 @@
     "@yoopta/divider": "^4.9.3",
     "@yoopta/editor": "^4.9.3",
     "@yoopta/embed": "^4.9.3",
+    "@yoopta/exports": "^4.9.3",
     "@yoopta/file": "^4.9.3",
     "@yoopta/headings": "^4.9.3",
     "@yoopta/image": "^4.9.3",

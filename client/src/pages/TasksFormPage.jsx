@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { set, useForm } from "react-hook-form";
-import { createTask, deleteTask, getTask, toggleTaskDone, updateTask } from "../api/tasks.api";
+import { createTask, deleteTask, getTasks, toggleTaskDone, updateTask } from "../api/tasks.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Navigation from "../components/Navigation";
@@ -44,7 +44,7 @@ const TasksFromPage = () => {
     useEffect(() => {
         async function loadTask() {
             if (params.id) {
-                const res = await getTask(params.id);
+                const res = await getTasks(params.id);
                 setValue("title", res.data.title);
                 setValue("description", res.data.description);
             }

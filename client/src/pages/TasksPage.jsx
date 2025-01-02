@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid2";
 import Button from "@mui/material/Button";
 
 const NAVIGATION = [
-    { segment: "all-task", title: "All tasks", icon: <DashboardIcon /> },
+    { segment: "", title: "All tasks", icon: <DashboardIcon /> },
     { segment: "work", title: "Work tasks", icon: <WorkIcon /> },
     { segment: "tasks-create", title: "Create task", icon: <WorkIcon /> },
     { segment: "account", title: "Account", icon: <SwitchAccountIcon /> },
@@ -32,7 +32,15 @@ const theme = extendTheme({
 
 function TasksPage() {
     return (
-        <AppProvider navigation={NAVIGATION} theme={theme}>
+        <AppProvider
+            navigation={NAVIGATION}
+            theme={theme}
+            branding={{
+                logo: <img src="/logoPaws.svg" alt="MUI logo" />,
+                title: "",
+                homeUrl: "/toolpad/core/introduction",
+            }}
+        >
             <DashboardLayout
                 sx={{
                     backgroundImage: "url(/fondos/dog_and_cat.svg)",
@@ -45,17 +53,9 @@ function TasksPage() {
                     },
                 }}
             >
-                <PageContainer sx={{ padding: 0, margin: 0 }}>
-                    <Grid container spacing={2}>
-                        <Grid xs={12}>
-                            <Button color="secondary" sx={{ marginLeft: 1 }}>
-                                Add new task
-                            </Button>
-                            <AddCircleOutlineIcon color="secondary" />
-                            <TaskList />
-                        </Grid>
-                    </Grid>
-                </PageContainer>
+                <Grid>
+                    <TaskList />
+                </Grid>
             </DashboardLayout>
         </AppProvider>
     );

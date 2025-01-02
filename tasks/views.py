@@ -15,9 +15,15 @@ class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        print("Encabezados recibidos:", self.request.headers)
-        print("Usuario autenticado:", self.request.user)
         return Task.objects.filter(user=self.request.user)
+
+    @action(detail=True, methods=['patch'])
+    def update_document(self, request, pk=None):
+        task = self.get_object()
+        description = request.data.get('description', '').strip()  # Obtener y limpiar la descripción
+        task.description = description
+        task.save()
+        return Response({"Task updated": task.description})
 
     @action(detail=True, methods=['patch'])
     def toggle_done(self, request, pk=None):
@@ -28,8 +34,6 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def user_tasks(self, request, pk=None):
-        print("Usuario autenticado:", request.user)
-        print("Encabezados recibidos:", request.headers)
         if not request.user.is_authenticated:
             return HttpResponseForbidden("Debes estar autenticado para ver tus tareas.")
         user = request.user

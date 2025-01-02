@@ -28,8 +28,20 @@ export const updateTask = (task, idTask) => {
     return baseURLTasks.put(`/${idTask}/`, task);
 };
 
-export const getTask = (id) => {
+export const getTask = (idTask) => {
+    return baseURLTasks.get(`/${idTask}/`);
+};
+
+export const getTasks = (id) => {
     return baseURLTasks.get(`/${id}/user_tasks/`);
+};
+
+export const updateDescription = (content, idTask) => {
+    console.log("Contenido que envio", content);
+
+    return baseURLTasks.patch(`/${idTask}/update_document/`, {
+        description: content.trim(),  // Limpiar el contenido antes de enviarlo
+    });
 };
 
 export const toggleTaskDone = (id) => {
